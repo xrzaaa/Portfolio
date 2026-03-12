@@ -329,31 +329,182 @@ h1 {
   text-underline-offset: 3px;
 }
 
+/* ── Timeline (internship) ── */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--line);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -28px;
+  top: 4px;
+  width: 13px;
+  height: 13px;
+  border: 2px solid var(--line);
+  background: var(--paper);
+}
+
+.timeline-item:first-child .timeline-dot {
+  background: var(--ink);
+}
+
+.timeline-content {
+  border: 2px solid var(--line);
+  padding: 16px;
+  background: #fdfdfd;
+}
+
+.timeline-content h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.timeline-content p {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--soft);
+}
+
+.timeline-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.timeline-links a {
+  display: inline-block;
+  width: fit-content;
+  font-size: 13px;
+  color: var(--ink);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.timeline-links a:hover {
+  text-decoration-thickness: 2.5px;
+}
+
+.project-line {
+  width: 100%;
+  height: 0;
+  border-top: 1px solid var(--line);
+  margin-bottom: 28px;
+}
+
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
 .project-card {
   border: 2px solid var(--line);
-  background: #fbfbfb;
+  background: #fdfdfd;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* hanging pin dot on the line */
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--ink);
+  border: 2px solid var(--line);
+}
+
+/* wire from pin to card */
+.project-card::after {
+  content: "";
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  width: 1px;
+  height: 26px;
+  background: var(--line);
 }
 
 .project-card img,
 .project-media {
   width: 100%;
-  height: 210px;
+  height: 160px;
+  order: 2;
 }
 
 .project-card img {
   object-fit: cover;
-  border-bottom: 2px solid var(--line);
+  border-top: 2px solid var(--line);
   filter: none;
 }
 
 .project-media {
-  border-bottom: 2px solid var(--line);
+  border-top: 2px solid var(--line);
+}
+
+.project-body {
+  padding: 14px;
+  order: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-body h3 {
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.project-body p {
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--soft);
+  flex: 1;
+}
+
+.project-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.project-links a {
+  color: var(--ink);
+  font-size: 12px;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.project-links a:hover {
+  text-decoration-thickness: 2.5px;
 }
 
 .video-lazy {
@@ -393,27 +544,8 @@ h1 {
   display: block;
 }
 
-.project-body {
-  padding: 14px;
-}
+/* old project-body/links replaced above */
 
-.project-body h3 {
-  margin-bottom: 8px;
-  font-size: 22px;
-}
-
-.project-body p {
-  margin: 0 0 10px;
-}
-
-.project-links {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-
-.project-links a,
 .contact a {
   color: var(--ink);
   text-decoration-thickness: 2px;
@@ -480,14 +612,36 @@ footer {
 
   .stats-grid,
   .card-grid,
-  .project-grid,
   .skill-list {
     grid-template-columns: 1fr;
   }
 
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-card::before,
+  .project-card::after {
+    display: none;
+  }
+
+  .project-line {
+    display: none;
+  }
+
   .project-card img,
   .project-media {
-    height: 190px;
+    height: 140px;
+  }
+
+  .timeline {
+    padding-left: 22px;
+  }
+
+  .timeline-dot {
+    left: -22px;
+    width: 10px;
+    height: 10px;
   }
 
   .game-item {
