@@ -406,11 +406,56 @@ h1 {
   text-decoration-thickness: 2.5px;
 }
 
+.project-timeline-dates {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.project-date {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--soft);
+  padding-bottom: 8px;
+}
+
 .project-line {
   width: 100%;
-  height: 0;
-  border-top: 1px solid var(--line);
+  height: 2px;
+  border: none;
+  background: linear-gradient(to right, var(--ink), #ccc);
   margin-bottom: 28px;
+  position: relative;
+}
+
+/* arrow at left end */
+.project-line::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 8px solid var(--ink);
+}
+
+/* end dot at right */
+.project-line::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: #ccc;
+  border-radius: 50%;
 }
 
 .project-grid {
@@ -618,6 +663,14 @@ footer {
 
   .project-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-timeline-dates {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-date:nth-child(n+3) {
+    display: none;
   }
 
   .project-card::before,
